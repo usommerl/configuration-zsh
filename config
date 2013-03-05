@@ -1,0 +1,54 @@
+#!/usr/bin/env zsh
+
+# load functions
+autoload -U compinit && compinit
+autoload -U promptinit && promptinit
+autoload -U colors && colors
+autoload -U zmv
+
+# load modules
+zmodload -i zsh/complist
+
+# completion
+zstyle ':completion:*' menu select
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:*:kill:*' force-list always
+zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -e -o pid,user,tty,cmd'
+#setopt completealiases
+
+# prompt
+PROMPT="%{$fg_bold[yellow]%}>%{$reset_color%} %n@%m %c%# "
+RPROMPT="%{$fg_bold[yellow]%}∙%{$reset_color%}"
+
+# keybindings
+bindkey -e
+bindkey                     '^R'            history-incremental-search-backward
+bindkey                     '^A'            beginning-of-line
+bindkey                     '^E'            end-of-line
+bindkey                     '^[[1;5D'       backward-word
+bindkey                     '^[[1;5C'       forward-word
+bindkey                     '^[[3~'         delete-char
+bindkey                     '^U'            backward-kill-line
+bindkey                     '^K'            kill-line
+bindkey -M menuselect       'h'             backward-char
+bindkey -M menuselect       'j'             down-line-or-history
+bindkey -M menuselect       'k'             up-line-or-history
+bindkey -M menuselect       'l'             forward-char
+
+# options
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt EXTENDED_GLOB
+setopt NO_CASE_GLOB
+setopt complete_in_word
+
+# history 
+HISTFILE=~/.zsh_history
+SAVEHIST=10000
+HISTSIZE=10000
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
+setopt EXTENDED_HISTORY
