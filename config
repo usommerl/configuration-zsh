@@ -1,10 +1,26 @@
 #!/usr/bin/env zsh
 
+# options
+setopt PROMPT_SUBST
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt EXTENDED_GLOB
+setopt NO_CASE_GLOB
+setopt COMPLETE_IN_WORD
+#setopt completealiases
+
 # load functions
+fpath=(~/.zsh/functions $fpath)
+autoload -U ~/.zsh/functions/*(:t)
 autoload -U compinit && compinit
 autoload -U promptinit && promptinit
 autoload -U colors && colors
 autoload -U zmv
+
+# prompt
+PROMPT="$(cursorColor)>%{$reset_color%} %n@%m %c%# "
+RPROMPT="$(cursorColor)∙%{$reset_color%}"
+unset -f cursorColor
 
 # load modules
 zmodload -i zsh/complist
@@ -14,11 +30,6 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:*:kill:*' force-list always
 zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -e -o pid,user,tty,cmd'
-#setopt completealiases
-
-# prompt
-PROMPT="%{$fg_bold[yellow]%}>%{$reset_color%} %n@%m %c%# "
-RPROMPT="%{$fg_bold[yellow]%}∙%{$reset_color%}"
 
 # keybindings
 bindkey -e
@@ -35,12 +46,6 @@ bindkey -M menuselect       'j'             down-line-or-history
 bindkey -M menuselect       'k'             up-line-or-history
 bindkey -M menuselect       'l'             forward-char
 
-# options
-setopt AUTO_CD
-setopt AUTO_PUSHD
-setopt EXTENDED_GLOB
-setopt NO_CASE_GLOB
-setopt complete_in_word
 
 # history 
 HISTFILE=~/.zsh_history

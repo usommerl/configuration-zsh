@@ -1,0 +1,45 @@
+#!/usr/bin/env/ zsh
+
+xCursorColor=$(xrdb -query | grep -e URxvt.cursorColor | cut -f 2)
+
+function translate() {
+
+    case $1 in
+         0 )
+            echo '%{$fg_no_bold[black]%}' ;;
+         1 )
+            echo '%{$fg_no_bold[red]%}' ;;
+         2 )
+            echo '%{$fg_no_bold[green]%}' ;;
+         3 )
+            echo '%{$fg_no_bold[yellow]%}' ;;
+         4 )
+            echo '%{$fg_no_bold[blue]%}' ;;
+         5 )
+            echo '%{$fg_no_bold[magenta]%}' ;;
+         6 )
+            echo '%{$fg_no_bold[cyan]%}' ;;
+         7 )
+            echo '%{$fg_no_bold[white]%}' ;;
+         8 )
+            echo '%{$fg_bold[black]%}' ;;
+         9 )
+            echo '%{$fg_bold[red]%}' ;;
+        10 )
+            echo '%{$fg_bold[green]%}' ;;
+        11 )
+            echo '%{$fg_bold[yellow]%}' ;;
+        12 )
+            echo '%{$fg_bold[blue]%}' ;;
+        13 )
+            echo '%{$fg_bold[magenta]%}' ;;
+        14 )
+            echo '%{$fg_bold[cyan]%}' ;;
+        15 )
+            echo '%{$fg_bold[white]%}' ;;
+         * )
+            echo '%{$fg_bold[red]%}' ;;
+    esac
+}
+
+translate $xCursorColor
