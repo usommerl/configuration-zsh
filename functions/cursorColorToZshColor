@@ -1,6 +1,8 @@
 #!/usr/bin/env/ zsh
 
-xCursorColor=$(xrdb -query | grep -e URxvt.cursorColor | cut -f 2)
+if [[ -n $DISPLAY ]]; then
+    xCursorColor=$(xrdb -query | grep -e URxvt.cursorColor | cut -f 2)
+fi
 
 function translate() {
 

@@ -10,7 +10,7 @@ setopt COMPLETE_IN_WORD
 #setopt completealiases
 
 # load functions
-fpath=(~/.zsh/functions $fpath)
+fpath=(~/.zsh/functions ~/.zsh/completions $fpath)
 autoload -U ~/.zsh/functions/*(:t)
 autoload -U compinit && compinit
 autoload -U promptinit && promptinit
@@ -18,9 +18,12 @@ autoload -U colors && colors
 autoload -U zmv
 
 # prompt
-PROMPT="$(cursorColor)>%{$reset_color%} %n@%m %c%# "
-RPROMPT="$(cursorColor)∙%{$reset_color%}"
-unset -f cursorColor
+PROMPT="$(cursorColorToZshColor)>%{$reset_color%} %n@%m %c%# "
+RPROMPT="$(cursorColorToZshColor)∙%{$reset_color%}"
+unset -f cursorColorToZshColor
+
+# ls colors
+eval $(dircolors .dir_colors 2>/dev/null)
 
 # load modules
 zmodload -i zsh/complist
@@ -45,7 +48,6 @@ bindkey -M menuselect       'h'             backward-char
 bindkey -M menuselect       'j'             down-line-or-history
 bindkey -M menuselect       'k'             up-line-or-history
 bindkey -M menuselect       'l'             forward-char
-
 
 # history 
 HISTFILE=~/.zsh_history
