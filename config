@@ -35,6 +35,12 @@ autoload -U promptinit && promptinit
 autoload -U colors && colors
 autoload -U zmv
 
+unalias run-help 2>/dev/null
+autoload -U run-help
+autoload run-help-git
+autoload run-help-svn
+autoload run-help-svk
+
 # prompt
 PROMPT="$(cursorColorToZshColor)>%{$reset_color%} %n@%m %c%# "
 RPROMPT="$(cursorColorToZshColor)∙%{$reset_color%}"
