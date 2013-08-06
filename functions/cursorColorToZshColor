@@ -1,7 +1,7 @@
 #!/usr/bin/env/ zsh
 
-if [[ -n $DISPLAY ]]; then
-    xCursorColor=$(xrdb -query | grep -e URxvt.cursorColor | cut -f 2)
+if [ -n "$DISPLAY" ] && command -v appres &> /dev/null; then
+    xCursorColor=$(appres URxvt | grep -e cursorColor | cut -f 2)
 fi
 
 function translate() {
@@ -45,3 +45,5 @@ function translate() {
 }
 
 translate $xCursorColor
+
+# vim: set filetype=sh:
