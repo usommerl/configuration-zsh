@@ -1,3 +1,3 @@
 [submodule "shell-commons"]
 	path = shell-commons
-	url = git@github.com:usommerl/shell-commons.git
+	url = https://github.com/usommerl/shell-commons.git
