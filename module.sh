@@ -9,10 +9,7 @@ function install() {
     local file=.${MODULE}rc
     link $CURRENTDIR/$file $HOME/$file
     link $CURRENTDIR $HOME/.$MODULE
-    info "Initialize submodules"
-    cd $CURRENTDIR
-    requires git
-    git submodule update --init
+    setupSubmodules
 }
 
 ############################################################## begin-template
@@ -100,6 +97,27 @@ function defaultRestoreProcedure() {
     if ! $logContainedLines; then
        info "Log file is empty. There are no backups to restore."
     fi
+}
+
+function setupSubmodules() {
+    info "Initialize submodules"
+    cd $CURRENTDIR
+    requires git
+    git submodule update --init
+    info "Modify push-url for submodules from github.com (Use SSH protocol)"
+    requires sed
+    git submodule foreach '
+        pattern="^.*https:\/\/(github.com)\/(.*\.git).*"
+        orgURL=$(git remote -v show | grep origin | grep push)
+        newURL=$(echo $orgURL | sed -r "/$pattern/{s/$pattern/git@\1:\2/;q0}; /$pattern/!{q1}")
+        if [ "$?" -eq 0 ]; then
+            command="git remote set-url --push origin $newURL"
+            echo "$command"
+            $($command)
+        else
+            echo "Nothing to do"
+        fi
+    '
 }
 
 function printHelp() {
