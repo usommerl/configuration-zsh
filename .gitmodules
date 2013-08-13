@@ -1,3 +1,6 @@
 [submodule "shell-commons"]
 	path = shell-commons
 	url = https://github.com/usommerl/shell-commons.git
+[submodule "configuration-module-lib"]
+	path = configuration-module-lib
+	url = https://github.com/usommerl/configuration-module-lib.git
