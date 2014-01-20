@@ -56,7 +56,7 @@ autoload run-help-svk
 
 # prompt
 PROMPT="$(cursorColorToZshColor)>%{$reset_color%} %n@%m %c%# "
-RPROMPT="$(cursorColorToZshColor)∙%{$reset_color%}"
+RPROMPT="$(cursorColorToZshColor)⋅%{$reset_color%}"
 unset -f cursorColorToZshColor
 
 # ls colors
