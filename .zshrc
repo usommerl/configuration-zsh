@@ -74,6 +74,9 @@ zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -e -o pid,user,tt
 # keybindings
 bindkey -e
 bindkey                     '^R'            history-incremental-search-backward
+bindkey -M isearch          '^N'            history-incremental-search-forward
+bindkey -M isearch          '^P'            history-incremental-search-backward
+bindkey -M isearch          '^M'            accept-search
 bindkey                     '^A'            beginning-of-line
 bindkey                     '^E'            end-of-line
 bindkey                     '^[[1;5D'       backward-word
