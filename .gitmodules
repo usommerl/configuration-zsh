@@ -1,7 +1,11 @@
 [submodule "shell-commons"]
-	path = shell-commons
-	url = https://github.com/usommerl/shell-commons.git
+    path = shell-commons
+    url = https://github.com/usommerl/shell-commons.git
     branch = master
 [submodule "configuration-module-lib"]
-	path = configuration-module-lib
-	url = https://github.com/usommerl/configuration-module-lib.git
+    path = configuration-module-lib
+    url = https://github.com/usommerl/configuration-module-lib.git
+[submodule "zsh-git-prompt"]
+    path = zsh-git-prompt
+    url = https://github.com/olivierverdier/zsh-git-prompt.git
+    ignore = untracked

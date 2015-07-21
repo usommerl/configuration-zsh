@@ -54,8 +54,22 @@ autoload run-help-git
 autoload run-help-svn
 autoload run-help-svk
 
-# prompt
-PROMPT="$(cursorColorToZshColor)>%{$reset_color%} %n@%m %c%# "
+# zsh-git-prompt settings
+gitPromptSource=~/.zsh/zsh-git-prompt/zshrc.sh
+if [ -e $gitPromptSource ]; then
+    source $gitPromptSource
+fi
+
+ZSH_THEME_GIT_PROMPT_PREFIX=" ["
+ZSH_THEME_GIT_PROMPT_SUFFIX="]"
+ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}%{▪%G%}"
+ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[red]%}%{▫%G%}"
+ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}%{⚡%G%}"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%G%}"
+GIT_PROMPT_EXECUTABLE="haskell"
+
+# actual prompt
+PROMPT="$(cursorColorToZshColor)>%{$reset_color%}"' %n@%m %c$(git_super_status)%# '
 RPROMPT="$(cursorColorToZshColor)⋅%{$reset_color%}"
 unset -f cursorColorToZshColor
 
