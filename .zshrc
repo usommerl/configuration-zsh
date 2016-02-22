@@ -115,4 +115,5 @@ setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 setopt EXTENDED_HISTORY
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # vim: set filetype=sh:
