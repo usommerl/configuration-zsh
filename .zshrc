@@ -69,8 +69,8 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%G%}"
 GIT_PROMPT_EXECUTABLE="haskell"
 
 # actual prompt
-PROMPT="$(cursorColorToZshColor)>%{$reset_color%}"' %n@%m %c$(git_super_status)%# '
-RPROMPT="$(cursorColorToZshColor)⋅%{$reset_color%}"
+PROMPT="$(cursorColorToZshColor)%(?.>.▪)%{$reset_color%}"' %n@%m %c$(git_super_status) '
+RPROMPT="$(cursorColorToZshColor)%(?.⋅.%?)%{$reset_color%}"
 unset -f cursorColorToZshColor
 
 # ls colors
