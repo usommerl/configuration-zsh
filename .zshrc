@@ -2,9 +2,9 @@
 
 # Load shared configuration settings
 for name in 'variables' 'aliases' 'functions' 'ssh-login'; do
-    if [ -e ~/.zsh/shell-commons/$name ]; then
-        source ~/.zsh/shell-commons/$name
-    fi
+  if [ -e ~/.zsh/shell-commons/$name ]; then
+    source ~/.zsh/shell-commons/$name
+  fi
 done
 
 # zsh specific aliases
@@ -12,23 +12,23 @@ alias history='history -d -f -i'
 
 # window title & terminal start directory
 case $TERM in
-    termite|*xterm*|rxvt|rxvt-unicode|rxvt-256color|rxvt-unicode-256color|(dt|k|E)term)
-        precmd () { 
-            print -Pn "\e]0;[%n@%M %~%#]\a" 
-            echo $(pwd) > $HOME/.urxvt/start_directory
-        }
-        preexec () { print -Pn "\e]0;[%n@%M %~%#] $1\a" }
+  termite|*xterm*|rxvt|rxvt-unicode|rxvt-256color|rxvt-unicode-256color|(dt|k|E)term)
+    precmd () {
+      print -Pn "\e]0;[%n@%M %~%#]\a"
+      echo $(pwd) > $HOME/.urxvt/start_directory
+    }
+    preexec () { print -Pn "\e]0;[%n@%M %~%#] $1\a" }
     ;;
-    screen|screen-256color)
-        precmd () { 
-            print -Pn "\e]83;title \"$1\"\a" 
-            print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~]\a" 
-        }
-        preexec () { 
-            print -Pn "\e]83;title \"$1\"\a" 
-            print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~] ($1)\a" 
-        }
-    ;; 
+  screen|screen-256color)
+    precmd () {
+      print -Pn "\e]83;title \"$1\"\a"
+      print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~]\a"
+    }
+    preexec () {
+      print -Pn "\e]83;title \"$1\"\a"
+      print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~] ($1)\a"
+    }
+    ;;
 esac
 
 # options
@@ -57,7 +57,7 @@ autoload run-help-svk
 # zsh-git-prompt settings
 gitPromptSource=~/.zsh/zsh-git-prompt/zshrc.sh
 if [ -e $gitPromptSource ]; then
-    source $gitPromptSource
+  source $gitPromptSource
 fi
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" ["
@@ -103,7 +103,7 @@ bindkey -M menuselect       'j'             down-line-or-history
 bindkey -M menuselect       'k'             up-line-or-history
 bindkey -M menuselect       'l'             forward-char
 
-# history 
+# history
 HISTFILE=~/.zsh/zsh_history
 SAVEHIST=10000
 HISTSIZE=10000
