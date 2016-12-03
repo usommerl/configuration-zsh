@@ -116,4 +116,4 @@ setopt HIST_VERIFY
 setopt EXTENDED_HISTORY
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# vim: set filetype=sh:
+[ -f ~/.bashhub/bashhub.zsh ] && source ~/.bashhub/bashhub.zsh
