@@ -1,10 +1,8 @@
 #!/usr/bin/env zsh
 
 # Load shared configuration settings
-for name in 'variables' 'aliases' 'functions' 'ssh-login'; do
-  if [ -e ~/.zsh/shell-commons/$name ]; then
-    source ~/.zsh/shell-commons/$name
-  fi
+for file in 'variables' 'aliases' 'functions' 'ssh-login'; do
+  [ -e ~/.zsh/shell-commons/$file ] && source ~/.zsh/shell-commons/$file
 done
 
 # zsh specific aliases
@@ -55,11 +53,7 @@ autoload run-help-svn
 autoload run-help-svk
 
 # zsh-git-prompt settings
-gitPromptSource=~/.zsh/zsh-git-prompt/zshrc.sh
-if [ -e $gitPromptSource ]; then
-  source $gitPromptSource
-fi
-
+[ -e ~/.zsh/zsh-git-prompt/zshrc.sh ] && source ~/.zsh/zsh-git-prompt/zshrc.sh
 ZSH_THEME_GIT_PROMPT_PREFIX=" ["
 ZSH_THEME_GIT_PROMPT_SUFFIX="]"
 ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}%{▪%G%}"
