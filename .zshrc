@@ -111,3 +111,9 @@ setopt EXTENDED_HISTORY
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.bashhub/bashhub.zsh ] && source ~/.bashhub/bashhub.zsh
+if [ -f ~/.zlua-src/z.lua ]; then
+  export _ZL_CMD=zz
+  eval "$(lua ~/.zlua-src/z.lua --init zsh enhanced once fzf)"
+  alias z="$_ZL_CMD -I"
+  alias zb="$_ZL_CMD -b"
+fi
