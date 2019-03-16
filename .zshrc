@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Load shared configuration settings
-for file in 'variables' 'aliases' 'functions' 'ssh-login'; do
+for file in 'variables.sh' 'aliases.sh' 'functions.sh' 'ssh-login'; do
   [ -e ~/.zsh/shell-commons/$file ] && source ~/.zsh/shell-commons/$file
 done
 
