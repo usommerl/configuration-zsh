@@ -60,7 +60,7 @@ ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}%{▪%G%}"
 ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[red]%}%{▫%G%}"
 ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}%{⚡%G%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%G%}"
-GIT_PROMPT_EXECUTABLE="haskell"
+[ -e "$__GIT_PROMPT_DIR/src/.bin/gitstatus" ] && GIT_PROMPT_EXECUTABLE="haskell"
 
 # actual prompt
 PROMPT="$(cursorColorToZshColor)%(?.>.▪)%{$reset_color%}"' %n@%m %c$(git_super_status) '
