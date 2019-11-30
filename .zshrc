@@ -66,9 +66,6 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%G%}"
 PROMPT="$(cursorColorToZshColor)%(?.>.▪)%{$reset_color%}"' %n@%m %c$(git_super_status) '
 unset -f cursorColorToZshColor
 
-# ls colors
-eval $(dircolors $HOME/.dir_colors 2>/dev/null)
-
 # load modules
 zmodload -i zsh/complist
 
