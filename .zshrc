@@ -113,3 +113,7 @@ if [ -f ~/.zsh/z.lua/z.lua ]; then
   alias z="$_ZL_CMD -I"
   alias zb="$_ZL_CMD -b"
 fi
+
+if command -v direnv &>/dev/null; then
+  eval "$(direnv hook zsh)"
+fi
